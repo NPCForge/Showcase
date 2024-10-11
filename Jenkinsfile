@@ -4,11 +4,10 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/NPCForge/Showcase.git'
+                git branch: 'main', url: 'https://github.com/NPCForge/Showcase.git'
             }
         }
     }
-    
 
     post {
         failure {
