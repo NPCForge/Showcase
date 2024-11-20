@@ -10,6 +10,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      meta: [
+        { name: 'google-site-verification', content: '_ZjzhijYBN_hzc38vThTARQFpcCAGoj9vZ7hK4Zosq8' }
+      ],
       script: [
         {
           // Inclure le fichier JS Bootstrap
