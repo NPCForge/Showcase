@@ -49,6 +49,21 @@
                 <a href="mailto:hugo1.fontaine@epitech.eu"><Icon class="icn" name="uil:envelope" /></a>
             </div>
         </div>
+        <!-- Tristan card -->
+        <div class="CardPresentation d-flex flex-column align-items-center justify-content-center">
+            <img src="~/public/Tristan.jpeg" alt="" class="photo">
+            <p style="text-align: center;">Tristan Bros</p>
+            <p style="text-align: center;">
+                Studying video game development
+                at <strong>Epitech Berlin, Germany. Developping a 3D
+                virtual environment on Unreal Engine.</strong>
+            </p>
+            <div class="icon_box">
+                <!-- <a href="https://github.com/Hugoftn"><Icon class="icn" name="uil:github" /></a> -->
+                <a href="https://www.linkedin.com/in/tristan-bros-067ab1201/"><Icon class="icn" name="uil:linkedin" /></a>
+                <a href="mailto:tristan.bros@epitech.eu"><Icon class="icn" name="uil:envelope" /></a>
+            </div>
+        </div>
     </div>
 </template>
 
