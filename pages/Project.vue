@@ -26,9 +26,17 @@
     .body {
         z-index: -1;
         top: 0;
-        height: 100vh;
-        position: fixed;
+        position: absolute;
+        height: 100%;
         transition: all 0.5s;
+    }
+
+    @media (max-width: 768px) {
+        .body {
+            top: 20%;
+            right: 1%;
+            width: 98%;
+        }
     }
 
     html.dark .body {

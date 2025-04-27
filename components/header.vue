@@ -66,7 +66,8 @@
 <style>
     .Header {
         background-color: white;
-        width: 100vw;
+        width: 100%;
+        height: 8%;
         transition: all 0.5s;
     }
 

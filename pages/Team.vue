@@ -134,9 +134,16 @@
     .body {
         z-index: -1;
         top: 0;
+        position: absolute;
         height: 100vh;
-        position: fixed;
         transition: all 0.5s;
+        max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .body {
+            top: 9vh;
+        }
     }
 
     html.dark .body {

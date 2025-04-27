@@ -10,7 +10,6 @@
         <p id="title">One plugin,<br><strong>limitless</strong> possibilities for your<br><strong>game
                 development.</strong></p>
         <div style="margin-top: 3vh;">
-            <!-- <img class="logo_png" src="~/public/chatgpt.png" alt="Chatgpt Logo"> -->
             <img class="logo_png" src="~/public/UE5.png" alt="UE5 logo">
         </div>
     </div>
@@ -45,10 +44,6 @@
         font-size: 25px;
         color: white;
     }
-
-    /* html.dark #title {
-        color: white;
-    } */
 
     .logo_png {
         margin-top: -15%;
