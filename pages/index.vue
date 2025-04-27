@@ -1,7 +1,6 @@
 <template>
     <div class="video-background">
         <video autoplay muted loop playsinline width="100%" class="bg-video">
-            <source src="/video.mov" type="video/mov" />
             <source src="/output.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
