@@ -1,6 +1,5 @@
 <template>
-    <HeaderCpn />
-    <div :class="{ 'flex-wrap': isMobile }" class="d-flex align-items-center justify-content-center" style="min-height: 90vh; width: 100vw; padding-left: 3vw; padding-right: 3vw;">
+    <div :class="{ 'flex-wrap': isMobile }" class="body d-flex align-items-center justify-content-center" style="min-height: 90vh; width: 100vw; padding-left: 3vw; padding-right: 3vw;">
         <!-- Mathieu card -->
         <div class="CardPresentation d-flex flex-column align-items-center justify-content-center">
             <img src="~/public/mathieu.jpg" alt="" class="photo">
@@ -67,7 +66,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     .CardPresentation {
         /* background-color: red; */
         width: 25vw;
@@ -85,6 +84,12 @@
     p {
         font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         font-size: 18px;
+    }
+
+    html.dark p {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 18px;
+        color: rgb(225, 225, 225);
     }
 
     .photo {
@@ -107,15 +112,39 @@
         background-color: black;
     }
 
+    html.dark .icn {
+        margin: 3%;
+        height: 96%;
+        text-decoration: none;
+        background-color: rgb(255, 255, 255);
+    }
+
+    html.dark .icn:hover {
+        margin: 3%;
+        height: 96%;
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0.492);
+    }
+
     .icn:hover {
         background-color: rgb(217, 217, 217);
         cursor: pointer;
     }
+
+    .body {
+        z-index: -1;
+        top: 0;
+        height: 100vh;
+        position: fixed;
+        transition: all 0.5s;
+    }
+
+    html.dark .body {
+        background-color: rgb(0, 1, 26);
+    }
 </style>
 
 <script setup>
-    import HeaderCpn from "~/components/header.vue"
-
     const isMobile = ref(false);
 
     const checkScreenSize = () => {

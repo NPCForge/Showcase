@@ -1,6 +1,5 @@
 <template>
-    <HeaderCpn />
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 90vh; width: 100vw; padding-left: 3vw; padding-right: 3vw;">
+    <div class="body d-flex flex-column align-items-center justify-content-center" style="min-height: 90vh; width: 100vw; padding-left: 3vw; padding-right: 3vw;">
         <div style="text-align: start;">
             <p style="text-decoration: underline;">EIP:</p>
             <p><strong>Epitech Innovative Project</strong>, is a flagship project of the Epitech course, which extends over several years and concludes during the last year of study. This is a major project that allows students to put into practice all the skills acquired during their training, particularly in development, project management and technological innovation.</p>
@@ -12,16 +11,34 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     p {
         font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         font-size: 25px;
     }
+
+    html.dark p {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 25px;
+        color: rgb(225, 225, 225);
+    }
+
+    .body {
+        z-index: -1;
+        top: 0;
+        height: 100vh;
+        position: fixed;
+        transition: all 0.5s;
+    }
+
+    html.dark .body {
+        background-color: rgb(0, 1, 26);
+    }
+
+
 </style>
 
 <script setup>
-    import HeaderCpn from "~/components/header.vue"
-
     const isMobile = ref(false);
 
     const checkScreenSize = () => {

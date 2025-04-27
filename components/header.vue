@@ -1,7 +1,8 @@
 <template>
     <div class="Header d-flex align-items-center">
         <div class="Left d-flex align-items-center">
-            <img src="~/public/logo.png" alt="" style="width: 10%;">
+            <img  v-if="theme === 'light'"  src="~/public/logo.png" alt="" style="width: 10%;">
+            <img  v-else                    src="~/public/logo_white.png" alt="" style="width: 10%;">
             <p class="title" @click="moveTo('/')">NPC<strong>Forge</strong></p>
         </div>
         <div v-if="!isMobile" class="Right d-flex align-items-center justify-content-end">
@@ -12,6 +13,9 @@
             <p class="title" v-else @click="moveTo('/Team')">Team</p>
 
             <a href="https://tekoss-organization.gitbook.io/npcforge/"><p class="title">Devlogs</p></a>
+
+            <Icon class="title"  v-if="theme === 'light'" name="solar:moon-bold-duotone"  @click="changeTheme"/>
+            <Icon class="title"  v-else                   name="solar:sun-2-broken"       @click="changeTheme"/>
         </div>
         <!-- Version Mobile avec un dropdown -->
         <div v-else class="Right d-flex align-items-center justify-content-end">
@@ -33,13 +37,17 @@
 <script setup>
     const router = useRouter()
     const route = useRoute()
-
-    const currentPageName = route.name
+    const theme = useTheme()
+    const currentPageName = computed(() => route.name);
     const isMobile = ref(false);
 
     const checkScreenSize = () => {
         isMobile.value = window.innerWidth < 768;
     };
+
+    const changeTheme = () => {
+        theme.value = theme.value == "dark" ? "light" : "dark"
+    }
 
     onMounted(() => {
         checkScreenSize();
@@ -57,8 +65,15 @@
 
 <style>
     .Header {
-        /* background-color: red; */
+        background-color: white;
         width: 100vw;
+        transition: all 0.5s;
+    }
+
+    html.dark .Header {
+        background-color: black;
+        width: 100vw;
+        transition: all 0.5s;
     }
 
     .Header > .Left {
@@ -78,6 +93,13 @@
         margin: 1vw;
         font-size: 20px;
         color: black;
+    }
+
+    html.dark .title {
+        font-family: 'Helvetica Neue';
+        margin: 1vw;
+        font-size: 20px;
+        color: rgb(255, 255, 255);
     }
 
     .title:hover {
