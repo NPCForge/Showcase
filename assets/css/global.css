@@ -1,0 +1,24 @@
+/* Mode clair : texte noir */
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: black; /* Texte noir par défaut */
+    transition: all 0.3s;
+}
+
+/* Spécifier les couleurs des balises h1, h2, h3, h4, h5, p pour le mode clair */
+h1, h2, h3, h4, h5, p {
+    color: black; /* Texte noir pour les titres et paragraphes en mode clair */
+}
+
+/* Mode sombre : texte blanc */
+html.dark body {
+    background-color: rgb(0, 1, 26);
+    color: white; /* Texte blanc en mode sombre */
+}
+
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark p {
+    color: white; /* Texte blanc pour les titres et paragraphes en mode sombre */
+}

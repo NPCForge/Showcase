@@ -136,7 +136,7 @@
         top: 0;
         position: absolute;
         height: 100vh;
-        transition: all 0.5s;
+        /* transition: all 0.5s; */
         max-width: 100%;
     }
 
@@ -144,10 +144,6 @@
         .body {
             top: 9vh;
         }
-    }
-
-    html.dark .body {
-        background-color: rgb(0, 1, 26);
     }
 </style>
 

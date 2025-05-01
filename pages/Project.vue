@@ -28,7 +28,7 @@
         top: 0;
         position: absolute;
         height: 100%;
-        transition: all 0.5s;
+        /* transition: all 0.5s; */
     }
 
     @media (max-width: 768px) {
@@ -39,9 +39,9 @@
         }
     }
 
-    html.dark .body {
+    /* html.dark .body {
         background-color: rgb(0, 1, 26);
-    }
+    } */
 
 
 </style>

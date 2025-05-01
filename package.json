@@ -13,9 +13,12 @@
   "dependencies": {
     "@nuxt/icon": "latest",
     "@popperjs/core": "^2.11.8",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
+    "echarts": "^5.6.0",
     "nuxt": "^3.13.0",
     "vue": "latest",
+    "vue-echarts": "^7.0.3",
     "vue-router": "latest"
   }
 }

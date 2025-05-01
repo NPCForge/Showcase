@@ -1,7 +1,8 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
   css: [
-    'bootstrap/dist/css/bootstrap.min.css'
+    'bootstrap/dist/css/bootstrap.min.css',
+    'assets/css/global.css'
   ],
 
   build: {

@@ -12,6 +12,9 @@
             <p class="title" v-if="currentPageName == 'Team'" style="text-decoration: underline;" @click="moveTo('/Team')">Team</p>
             <p class="title" v-else @click="moveTo('/Team')">Team</p>
 
+            <p class="title" v-if="currentPageName == 'contributors'" style="text-decoration: underline;" @click="moveTo('/contributors')">Contributors</p>
+            <p class="title" v-else @click="moveTo('/contributors')">Contributors</p>
+
             <a href="https://tekoss-organization.gitbook.io/npcforge/"><p class="title">Devlogs</p></a>
 
             <Icon class="title"  v-if="theme === 'light'" name="solar:moon-bold-duotone"  @click="changeTheme"/>
