@@ -18,7 +18,7 @@
         </div>
         <!-- Tom card -->
         <div class="CardPresentation d-flex flex-column align-items-center justify-content-center">
-            <img src="~/public/tom.png" alt="" class="photo">
+            <img src="~/public/tom.jpg" alt="" class="photo">
             <p style="text-align: center;">Tom daniel</p>
             <p style="text-align: center;">
                 Studying game development
