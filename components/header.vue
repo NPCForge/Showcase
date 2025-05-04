@@ -30,6 +30,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" @click="moveTo('/Project')">Project</a></li>
                     <li><a class="dropdown-item" @click="moveTo('/Team')">Team</a></li>
+                    <li><a class="dropdown-item" @click="moveTo('/contributors')">Contributors</a></li>
                     <li><a class="dropdown-item" href="https://tekoss-organization.gitbook.io/npcforge/">Devlogs</a></li>
                 </ul>
             </div>
