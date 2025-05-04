@@ -8,6 +8,26 @@ body {
     transition: all 0.3s;
 }
 
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.grey {
+    background-color: grey;
+}
+
 /* Spécifier les couleurs des balises h1, h2, h3, h4, h5, p pour le mode clair */
 h1, h2, h3, h4, h5, p {
     color: black; /* Texte noir pour les titres et paragraphes en mode clair */

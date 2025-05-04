@@ -77,7 +77,7 @@
     @media (max-width: 768px) {
         .CardPresentation {
             width: 70vw;
-            margin: 2vw 0;
+            margin: 4vh 0;
         }
     }
 
