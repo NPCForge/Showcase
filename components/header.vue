@@ -23,7 +23,7 @@
         <!-- Version Mobile avec un dropdown -->
         <div v-else class="Right d-flex align-items-center justify-content-end">
             <div class="dropdown" style="margin: 1%;">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" @click="debug">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <Icon name="uil:bars" />
                 </a>
 
@@ -44,10 +44,6 @@
     const theme = useTheme()
     const currentPageName = computed(() => route.name);
     const isMobile = ref(false);
-
-    const debug = () => {
-        console.log("here")
-    }
 
     const checkScreenSize = () => {
         isMobile.value = window.innerWidth < 768;

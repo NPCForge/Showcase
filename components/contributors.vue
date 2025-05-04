@@ -35,10 +35,6 @@ const props = defineProps({
     name: String
 })
 
-console.log('resName:', props.resName)
-console.log('resValue:', props.resValue)
-console.log('resAvatar:', props.resAvatar)
-
 const redirectToGitHub = (username) => {
     // Redirige vers le profil GitHub du contributeur
     window.location.href = `https://github.com/${username}`;
