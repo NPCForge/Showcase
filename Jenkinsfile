@@ -20,13 +20,13 @@ pipeline {
             steps {
                 script {
                     def containerExists = sh(
-                        script: 'docker ps -q -f name=showcase-prod',
+                        script: 'docker ps -a -q -f name=^showcase-prod$',
                         returnStdout: true
                     ).trim()
 
                     if (containerExists) {
-                        sh 'docker stop showcase-prod'
-                        sh 'docker rm showcase-prod'
+                        sh 'docker stop showcase-prod || true'
+                        sh 'docker rm showcase-prod || true'
                     }
 
                     sh 'docker run -d -p 3000:3000 --name showcase-prod showcase'
@@ -37,10 +37,10 @@ pipeline {
 
     post {
         failure {
-            echo "Deployment Failed"
+            echo 'Deployment Failed'
         }
         success {
-            echo "Deployment Success"
+            echo 'Deployment Success'
         }
     }
 }
