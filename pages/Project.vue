@@ -1,67 +1,206 @@
 <template>
-    <div class="body d-flex flex-column align-items-center justify-content-center">
-        <div class="section">
-            <p class="underline">EIP:</p>
-            <p><strong>Epitech Innovative Project</strong>, is a flagship project of the Epitech course, which extends over several years and concludes during the last year of study. This is a major project that allows students to put into practice all the skills acquired during their training, particularly in development, project management and technological innovation.</p>
+    <div class="leaderboard-section">
+        <!-- Hero Section -->
+        <div class="hero-section text-center py-5 mb-5">
+            <div class="container">
+                <h1 class="display-4 fw-bold text-white mb-3">
+                    <Icon class="me-3" name="uil:github" />
+                    Contributors Leaderboard
+                </h1>
+                <p class="lead text-white-50">Recognizing our top contributors across all repositories</p>
+            </div>
         </div>
-        <div class="section">
-            <p class="underline">NPC<strong>Forge</strong>:</p>
-            <p>We are developing a <strong>3D simulation of Large Language Models (LLMs)</strong> where users can observe and interact with autonomous language models in a virtual environment. This simulation is intended for different types of users, including gamers, developers, and researchers. Players will be able to log in to play with <strong>LLMs</strong>, while developers and researchers can use the simulation for study and development purposes.</p>
+
+        <!-- Leaderboard Content -->
+        <div class="container">
+            <div class="row g-4">
+                <!-- Plugin Contributors -->
+                <div class="col-12 col-lg-4">
+                    <ContributorCard v-if="pluginData" :res-name="pluginData.resName" :res-value="pluginData.resValue"
+                        :res-avatar="pluginData.resAvatar" :name="'Plugin'" :icon="'uil:puzzle-piece'"
+                        :color="'primary'" />
+                </div>
+
+                <!-- Showcase Contributors -->
+                <div class="col-12 col-lg-4">
+                    <ContributorCard v-if="showcaseData" :res-name="showcaseData.resName"
+                        :res-value="showcaseData.resValue" :res-avatar="showcaseData.resAvatar" :name="'Showcase'"
+                        :icon="'uil:presentation'" :color="'success'" />
+                </div>
+
+                <!-- API Contributors -->
+                <div class="col-12 col-lg-4">
+                    <ContributorCard v-if="apiData" :res-name="apiData.resName" :res-value="apiData.resValue"
+                        :res-avatar="apiData.resAvatar" :name="'API'" :icon="'uil:server'" :color="'warning'" />
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div v-if="!pluginData && !showcaseData && !apiData" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-3 text-muted">Loading contributors data...</p>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section mt-5 py-5">
+                <div class="row text-center">
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="stat-card">
+                            <Icon class="stat-icon text-primary" name="uil:users-alt" />
+                            <h3 class="stat-number">{{ totalContributors }}</h3>
+                            <p class="stat-label">Total Contributors</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="stat-card">
+                            <Icon class="stat-icon text-success" name="uil:code-branch" />
+                            <h3 class="stat-number">{{ totalCommits }}</h3>
+                            <p class="stat-label">Total Commits</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="stat-card">
+                            <Icon class="stat-icon text-warning" name="uil:folder" />
+                            <h3 class="stat-number">3</h3>
+                            <p class="stat-label">Active Repositories</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
-<style scoped>
-    .body {
-        z-index: -1;
-        margin-top: 8%; /* Added margin-top to ensure content doesn't overlap the header */
-        height: auto; /* Ensure that the content uses the full available height */
-        width: 100vw;
-        padding-left: 3vw;
-        padding-right: 3vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .section {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: start;
-    }
-
-    .underline {
-        text-decoration: underline;
-    }
-
-    p {
-        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-        font-size: 25px;
-    }
-
-    html.dark p {
-        color: rgb(225, 225, 225);
-    }
-</style>
-
-
 <script setup>
-    const isMobile = ref(false);
+    import ContributorCard from '~/components/contributors.vuee';
+    import {
+        getShowcaseContributors,
+        getApiContributors,
+        getPluginContributors
+    } from '~/services/contributorsService'
 
-    const checkScreenSize = () => {
-        isMobile.value = window.innerWidth < 768;
-    };
+    import { ref, computed, onMounted } from 'vue';
 
-    onMounted(() => {
-        checkScreenSize();
-        window.addEventListener('resize', checkScreenSize);
+    const pluginData = ref(null)
+    const apiData = ref(null)
+    const showcaseData = ref(null)
+
+    const totalContributors = computed(() => {
+        let total = 0;
+        if (pluginData.value) total += pluginData.value.resName.length;
+        if (apiData.value) total += apiData.value.resName.length;
+        if (showcaseData.value) total += showcaseData.value.resName.length;
+        return total;
     });
 
-    onUnmounted(() => {
-        window.removeEventListener('resize', checkScreenSize);
+    const totalCommits = computed(() => {
+        let total = 0;
+        if (pluginData.value) total += pluginData.value.resValue.reduce((sum, val) => sum + val, 0);
+        if (apiData.value) total += apiData.value.resValue.reduce((sum, val) => sum + val, 0);
+        if (showcaseData.value) total += showcaseData.value.resValue.reduce((sum, val) => sum + val, 0);
+        return total;
+    });
+
+    onMounted(async () => {
+        try {
+            const [plugin, api, showcase] = await Promise.all([
+                getPluginContributors(),
+                getApiContributors(),
+                getShowcaseContributors()
+            ]);
+
+            pluginData.value = plugin;
+            apiData.value = api;
+            showcaseData.value = showcase;
+        } catch (error) {
+            console.error('Error loading contributors:', error);
+        }
     });
 </script>
+
+<style scoped>
+    .leaderboard-section {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+    }
+
+    .hero-section .container {
+        position: relative;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .stats-section {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-card {
+        padding: 2rem 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 1rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #495057;
+    }
+
+    .stat-label {
+        color: #6c757d;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 3rem 0 !important;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-section h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
