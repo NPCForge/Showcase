@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-    import ContributorCard from '~/components/contributors.vuee';
+    import ContributorCard from '~/components/contributors.vue';
     import {
         getShowcaseContributors,
         getApiContributors,
