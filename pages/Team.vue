@@ -82,7 +82,7 @@
             github: 'https://github.com/Grainbox',
             email: 'tom.daniel@epitech.eu',
             linkedin: 'https://www.linkedin.com/in/tom-daniel-54246b1b4/',
-            skills: ['Unreal Engine', 'C++', 'Game Dev']
+            skills: ['Unreal Engine', 'C++', 'Game Dev', 'AI']
         },
         {
             name: 'Hugo Fontaine',
@@ -91,7 +91,7 @@
             github: 'https://github.com/Hugoftn',
             email: 'hugo1.fontaine@epitech.eu',
             linkedin: 'https://www.linkedin.com/in/hugo-fontaine-72a2a6231/',
-            skills: ['3D Modeling', 'Unreal Engine', 'VR']
+            skills: ['Unreal Engine', 'C++', 'Game Dev', 'Level Design']
         },
         {
             name: 'Tristan Bros',
@@ -100,7 +100,7 @@
             github: null,
             email: 'tristan.bros@epitech.eu',
             linkedin: 'https://www.linkedin.com/in/tristan-bros-067ab1201/',
-            skills: ['3D Environment', 'Level Design', 'Unreal Engine']
+            skills: ['Unreal Engine', 'C++', 'Game Dev', 'Level Design']
         }
     ]);
 </script>
