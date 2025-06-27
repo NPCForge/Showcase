@@ -62,7 +62,6 @@
 </template>
 
 <script setup>
-    import { useHead } from '#app'
     import { ref, onMounted } from 'vue';
 
     const teamMembers = ref([
@@ -103,6 +102,19 @@
             skills: ['Unreal Engine', 'C++', 'Game Dev', 'Level Design']
         }
     ]);
+
+    useSeoMeta({
+        title: 'Meet the Team – NPCForge Project',
+        ogTitle: 'Meet the Team – NPCForge Project',
+        description: 'Discover the passionate developers behind NPCForge, building the future of AI-powered game characters with Unreal Engine and cutting-edge technologies.',
+        ogDescription: 'Meet the talents driving NPCForge, including AI specialists and Unreal Engine developers from around the world.',
+        ogSiteName: 'NPCForge',
+        ogType: 'website',
+        ogUrl: 'https://npcforge.fr/team',
+        ogImage: '/team-cover.png',
+        twitterCard: 'summary_large_image'
+    })
+
 </script>
 
 <style scoped>
@@ -281,27 +293,36 @@
         background: linear-gradient(135deg, #0056b3 0%, #003166 100%);
     }
 
+    html.dark .hero-section .text-primary {
+        color: #f7fafc !important;
+    }
+
+    html.dark .hero-section .text-muted {
+        color: #cbd5e0 !important;
+    }
+
     html.dark .team-card {
         background: #2d3748;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+        border: 1px solid #4a5568;
     }
 
     html.dark .team-card:hover {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
     }
 
     html.dark .card-title {
-        color: #e2e8f0;
+        color: #f7fafc !important;
     }
 
     html.dark .card-text {
-        color: #a0aec0;
+        color: #cbd5e0 !important;
     }
 
     html.dark .badge {
         background-color: #4a5568 !important;
-        color: #e2e8f0 !important;
-        border-color: #2d3748 !important;
+        color: #f7fafc !important;
+        border-color: #718096 !important;
     }
 
     html.dark .overlay {
@@ -309,12 +330,12 @@
     }
 
     html.dark .social-links .btn {
-        border-color: #e2e8f0;
-        color: #e2e8f0;
+        border-color: #f7fafc;
+        color: #f7fafc;
     }
 
     html.dark .social-links .btn:hover {
-        background: #e2e8f0;
+        background: #f7fafc;
         color: #0056b3;
     }
 </style>

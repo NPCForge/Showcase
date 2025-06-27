@@ -139,8 +139,6 @@
 </template>
 
 <script setup>
-    import { useHead } from '#app'
-
     const technologies = [
         { name: 'Unreal Engine', icon: 'devicon:unrealengine' },
         { name: 'AI/ML', icon: 'uil:brain' },
@@ -148,6 +146,18 @@
         { name: 'C++', icon: 'devicon:cplusplus' },
         { name: 'Nuxt3', icon: 'devicon:nuxtjs' }
     ];
+
+    useSeoMeta({
+        title: 'NPCForge – 3D Simulation of LLMs for Games & Research',
+        ogTitle: 'NPCForge – 3D Simulation of LLMs for Games & Research',
+        description: 'NPCForge is an Epitech Innovative Project that simulates Large Language Models in a 3D virtual environment for gamers, developers, and researchers.',
+        ogDescription: 'Interact with autonomous AI characters powered by LLMs in NPCForge – a 3D simulation built with Unreal Engine and AI technologies.',
+        ogSiteName: 'NPCForge',
+        ogType: 'website',
+        ogUrl: 'https://npcforge.fr/project',
+        ogImage: '/team-cover.png',
+        twitterCard: 'summary_large_image'
+    })
 </script>
 
 <style scoped>

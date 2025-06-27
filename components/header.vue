@@ -9,6 +9,9 @@
             <p class="title" v-if="currentPageName == 'Project'" style="text-decoration: underline;" @click="moveTo('/Project')">Project</p>
             <p class="title" v-else @click="moveTo('/Project')">Project</p>
 
+            <p class="title" v-if="currentPageName == 'Werewolf'" style="text-decoration: underline;" @click="moveTo('/Werewolf')">Werewolf</p>
+            <p class="title" v-else @click="moveTo('/Werewolf')">Werewolf</p>
+
             <p class="title" v-if="currentPageName == 'Team'" style="text-decoration: underline;" @click="moveTo('/Team')">Team</p>
             <p class="title" v-else @click="moveTo('/Team')">Team</p>
 

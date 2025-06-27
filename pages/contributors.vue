@@ -2,7 +2,7 @@
     <div class="body">
         <div class="containers">
             <div class="header d-flex align-items-center justify-content-start">
-                <h1>Leaderboard of the contribution <span class="Icon"><Icon name="uil:github" style="height: 3.5vh;"/></span></h1>
+                <h1>Leaderboard of contribution</h1>
             </div>
             <div class="content d-flex flex-column align-items-center justify-content-start">
                 <contributors
@@ -51,6 +51,19 @@
         apiData.value = await getApiContributors()
         showcaseData.value = await getShowcaseContributors()
     })
+
+    useSeoMeta({
+        title: 'Leaderboard – NPCForge Contributors',
+        ogTitle: 'Leaderboard – NPCForge Contributors',
+        description: 'Discover the top contributors powering the NPCForge project across Plugin, API, and Showcase modules.',
+        ogDescription: 'Discover the top contributors powering the NPCForge project across Plugin, API, and Showcase modules.',
+        ogSiteName: 'NPCForge',
+        ogType: 'website',
+        ogUrl: 'https://npcforge.fr/contributors',
+        ogImage: '/team-cover.png',
+        twitterCard: 'summary_large_image'
+    })
+
 </script>
 
 <style scoped>
