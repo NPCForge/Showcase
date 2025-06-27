@@ -6,17 +6,10 @@
             <p class="title" @click="moveTo('/')">NPC<strong>Forge</strong></p>
         </div>
         <div v-if="!isMobile" class="Right d-flex align-items-center justify-content-end">
-            <p class="title" v-if="currentPageName == 'Project'" style="text-decoration: underline;" @click="moveTo('/Project')">Project</p>
-            <p class="title" v-else @click="moveTo('/Project')">Project</p>
-
-            <p class="title" v-if="currentPageName == 'Werewolf'" style="text-decoration: underline;" @click="moveTo('/Werewolf')">Werewolf</p>
-            <p class="title" v-else @click="moveTo('/Werewolf')">Werewolf</p>
-
-            <p class="title" v-if="currentPageName == 'Team'" style="text-decoration: underline;" @click="moveTo('/Team')">Team</p>
-            <p class="title" v-else @click="moveTo('/Team')">Team</p>
-
-            <p class="title" v-if="currentPageName == 'contributors'" style="text-decoration: underline;" @click="moveTo('/contributors')">Contributors</p>
-            <p class="title" v-else @click="moveTo('/contributors')">Contributors</p>
+            <template v-for="page in pages">
+                <p class="title" v-if="currentPageName == page" style="text-decoration: underline;" @click="moveTo('/' + page)">{{ page }}</p>
+                <p class="title" v-else @click="moveTo('/' + page)">{{ page }}</p>
+            </template>
 
             <a href="https://tekoss-organization.gitbook.io/npcforge/"><p class="title">Devlogs</p></a>
 
@@ -31,9 +24,8 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" @click="moveTo('/Project')">Project</a></li>
-                    <li><a class="dropdown-item" @click="moveTo('/Team')">Team</a></li>
-                    <li><a class="dropdown-item" @click="moveTo('/contributors')">Contributors</a></li>
+                    <li v-for="page in pages"><a class="dropdown-item" @click="moveTo('/' + page)">{{ page }}</a></li>
+                    
                     <li><a class="dropdown-item" href="https://tekoss-organization.gitbook.io/npcforge/">Devlogs</a></li>
                 </ul>
             </div>
@@ -47,6 +39,13 @@
     const theme = useTheme()
     const currentPageName = computed(() => route.name);
     const isMobile = ref(false);
+
+    const pages = [
+        'Project',
+        'Werewolf',
+        'Team',
+        'Contributors'
+    ]
 
     const checkScreenSize = () => {
         isMobile.value = window.innerWidth < 768;
